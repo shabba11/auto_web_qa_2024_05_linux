@@ -33,15 +33,13 @@ def parse_ps_output(output):
         if cpu > max_cpu_process[1]:
             max_cpu_process = (command[:20], cpu)
 
-    return {
-        "users": users,
-        "process_count": process_count,
-        "user_processes": user_processes,
-        "total_memory": total_memory,
-        "total_cpu": total_cpu,
-        "max_memory_process": max_memory_process,
-        "max_cpu_process": max_cpu_process,
-    }
+    return {"users": users,
+            "process_count": process_count,
+            "user_processes": user_processes,
+            "total_memory": total_memory,
+            "total_cpu": total_cpu,
+            "max_memory_process": max_memory_process,
+            "max_cpu_process": max_cpu_process}
 
 
 def main():
@@ -63,8 +61,9 @@ def main():
 
     report += f"\nВсего памяти используется: {stats['total_memory']:.1f}%\n"
     report += f"Всего CPU используется: {stats['total_cpu']:.1f}%\n"
-    report += (f"Больше всего памяти использует: ({stats['max_memory_process'][0]}, {stats['max_memory_process'][1]:.1f}"
-               f"%)\n")
+    report += (
+        f"Больше всего памяти использует: ({stats['max_memory_process'][0]}, {stats['max_memory_process'][1]:.1f}"
+        f"%)\n")
     report += f"Больше всего CPU использует: ({stats['max_cpu_process'][0]}, {stats['max_cpu_process'][1]:.1f}%)\n"
 
     print(report)
